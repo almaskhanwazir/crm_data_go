@@ -2,12 +2,12 @@ import Table from "@/components/DataTable/Table";
 import { users } from "./lib/tblData";
 import { get, ApiUrls } from "./lib/apiClient";
 import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
-
+import ECommerce from "@/components/Dashboard/E-commerce";
 
 export default async function Home() {
-
   return (
-    <main className="bg-white  w-full p-4 mt-10">
+    <main className=" w-full p-4 mt-10">
+      <div className="bg-white">
       <div className="flex h-[70px]">
         <DisplaySettingsIcon className="text-orange-500 w-20 h-20" />
         <div className="flex justify-center items-center h-[70px] mt-2">
@@ -17,10 +17,13 @@ export default async function Home() {
           </div>
         </div>
       </div>
-      
 
       <div className="tbl">
-        <Table list={users} />
+        <Table />
+      </div>
+      </div>
+      <div className="mt-4">
+        <ECommerce />
       </div>
     </main>
   );
@@ -29,7 +32,7 @@ export default async function Home() {
 async function getData() {
   try {
     const response = await get(ApiUrls.TblDataAPI.getTblData);
-    debugger
+    debugger;
     return {
       doctorData: response.data.results,
     };
